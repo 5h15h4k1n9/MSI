@@ -17,6 +17,7 @@ description:         Please see the README on GitHub at <https://github.com/5h15
 
 dependencies:
   - base >= 4.7 && < 5
+  - containers
   - hspec >= 2.7.8 && < 3
   - hspec-core >= 2.7.8 && < 3
   - hspec-discover >= 2.7.8 && < 3
