@@ -2,6 +2,9 @@
 <a href="https://github.com/5h15h4k1n9/MSI/actions"><img alt="Test Status" src="https://github.com/5h15h4k1n9/MSI/actions/workflows/test.yml/badge.svg"></a>
 
 # Mini Solidity Interpreter
+
+This is a mini interpreter for Solidity language written in Haskell.
+
 ## Tasks
 - [ ] Standard types
   - [ ] `uint`
@@ -24,7 +27,7 @@
 - [ ] Constants
 - [ ] `require`
   - Throws error if condition is false and reverts all changes
-- [ ] Expressions
+- [ ] Statements
   - [ ] `if`
   - [ ] `for`
 
@@ -80,7 +83,7 @@ contract Example {
 ## Example of usage
 
 ```
-~> myAwesomeSolidityInterpreter Example.sol
+~> msi Example.sol
 Example.sol successfully uploaded!
 Available functions:
     storeValue(uint)
@@ -120,3 +123,7 @@ Haskell > OCaml
 Bye-bye!
 ~>
 ```
+
+## Best regards
+
+[KarasssDev](https://github.com/KarasssDev) – for the idea of the project and requirements.
