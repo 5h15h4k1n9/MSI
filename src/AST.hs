@@ -41,7 +41,7 @@ data SValue =
   | VString String                                               -- "abc"
   | VMapping SType SType (Map SValue SValue)                     -- {1 => true, 2 => false}
   | VArray SType [SValue] Integer                                -- [1, 2, 3]
-  | VFun [(Id, SType)] AccessModifier (Maybe SType) SStmt   -- function (uint x, bool y) public returns(uint) { return x; }
+  | VFun [(Id, SType)] AccessModifier (Maybe SType) SStmt        -- function (uint x, bool y) public returns(uint) { return x; }
 
 instance (Show SValue) where
   show (VUInt8   i    ) = show i
@@ -107,16 +107,16 @@ data SExpr =
   | EVal SValue                                                  -- 1, true, "abc"
   | EUnOp SUnOp SExpr                                            -- -x, !x
   | EBinOp SBinOp SExpr SExpr                                    -- x + y, x && y
-  | EArrAccess SExpr SExpr                                       -- x[0]
+  | EAccess SExpr SExpr                                          -- x[y], m["key"], s[1]
   | EFunCall Id [SExpr]                                          -- foo(x, y)
   deriving Show
   
 data SStmt =
-    SVarDecl Id AccessModifier                                   -- uint public x;
-  | SConstDecl Id AccessModifier SExpr                           -- uint private constant x = 1;
+    SVarDecl   Id SType AccessModifier SExpr                     -- uint public x;
+  | SConstDecl Id SType AccessModifier SExpr                     -- uint private constant x = 1;
   | SAssign SExpr SExpr                                          -- x = 1;
-  | SIf SExpr SStmt                                              -- if (x) { return y; }
-  | SFor Id SExpr SExpr SStmt                                    -- for (uint i = 0; i < 10; i++) { return i; }
+  | SIf     SExpr SStmt                                          -- if (x) { return y; }
+  | SFor SStmt SExpr SStmt SStmt                                 -- for (uint i = 0; i < 10; i++) { return i; }
   | SReturn (Maybe SExpr)                                        -- return x;
   | SRequire SExpr Message                                       -- require(!x, "x is not true");
   | SBlock [SStmt]                                               -- { uint x = 1; return x; }
