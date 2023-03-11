@@ -1,6 +1,6 @@
 module AST where
 
-import Data.Map  (Map)
+import Data.Map  (Map, fromList, toList)
 import Data.Word (Word8)
 
 type Id = String
@@ -21,7 +21,7 @@ data SType =
   | TString                                                      -- string
   | TMapping SType SType                                         -- mapping(uint => bool)
   | TArray SType Integer                                         -- uint[10]
---  | TFun [SType] AccessModifier (Maybe SType)                    -- function (uint, bool) public returns(uint)
+  | TFun [SType] AccessModifier (Maybe SType)                    -- function (uint, bool) public returns(uint)
   deriving Eq
 
 instance Show SType where
@@ -39,19 +39,34 @@ data SValue =
     VUInt8 Word8                                                 -- 1, 2, 3
   | VBool Bool                                                   -- true, false
   | VString String                                               -- "abc"
-  | VMapping (Map SValue SValue)                                 -- {1 => true, 2 => false}
+  | VMapping SType SType (Map SValue SValue)                     -- {1 => true, 2 => false}
   | VArray SType [SValue] Integer                                -- [1, 2, 3]
---  | VFun [(Id, SType)] AccessModifier (Maybe SType) SStmt   -- function (uint x, bool y) public returns(uint) { return x; }
-  deriving (Eq, Show)
+  | VFun [(Id, SType)] AccessModifier (Maybe SType) SStmt   -- function (uint x, bool y) public returns(uint) { return x; }
+
+instance (Show SValue) where
+  show (VUInt8   i    ) = show i
+  show (VBool    b    ) = if b then "true" else "false"
+  show (VString  s    ) = show s
+  show (VMapping _ _ m) = nm where
+    listElemToMapElem (k, v) = show k ++ " => " ++ show v
+    nm' = concatMap (\x -> x ++ ", ") $ map listElemToMapElem $ toList m
+    nm = case length nm' of 
+      0 -> "{}"
+      _ -> "{" ++ take (length nm' - 2) nm' ++ "}"
+  show (VArray   _ v _) = show v
 
 data SUnOp =
-    Negate                                                       -- -
+    Neg                                                          -- -
   | Not                                                          -- !
+  | Inc                                                          -- ++
+  | Dec                                                          -- --
   deriving Eq
 
 instance Show SUnOp where
-  show Negate = "-"
-  show Not    = "!"
+  show Neg = "-"
+  show Not = "!"
+  show Inc = "++"
+  show Dec = "--"
   
 data SBinOp =
 -- Arithmetic
@@ -94,7 +109,7 @@ data SExpr =
   | EBinOp SBinOp SExpr SExpr                                    -- x + y, x && y
   | EArrAccess SExpr SExpr                                       -- x[0]
   | EFunCall Id [SExpr]                                          -- foo(x, y)
-  deriving (Eq, Show)
+  deriving Show
   
 data SStmt =
     SVarDecl Id AccessModifier                                   -- uint public x;
@@ -105,7 +120,7 @@ data SStmt =
   | SReturn (Maybe SExpr)                                        -- return x;
   | SRequire SExpr Message                                       -- require(!x, "x is not true");
   | SBlock [SStmt]                                               -- { uint x = 1; return x; }
-  deriving (Eq, Show)
+  deriving Show
   
-data SContract = SContract Id SStmt deriving (Eq, Show)          -- contract Foo { uint public x = 1; }
+data SContract = SContract Id SStmt deriving Show                -- contract Foo { uint public x = 1; }
   
