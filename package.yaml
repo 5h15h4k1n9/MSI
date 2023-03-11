@@ -22,6 +22,8 @@ dependencies:
   - hspec-core >= 2.7.8 && < 3
   - hspec-discover >= 2.7.8 && < 3
   - hspec-expectations >= 0.8.2 && < 1
+  - parsec
+  - text
 
 ghc-options:
   - -Wall
