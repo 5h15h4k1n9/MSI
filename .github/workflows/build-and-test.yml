@@ -12,20 +12,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-haskell@v1
-        with:
-          enable-stack: true
-          ghc-version: 8.10.4
-
-      - name: Cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.stack
-            ~/.stack-work
-          key: ${{ runner.os }}-stack-${{ hashFiles('**/stack.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-stack-
 
       - name: Setup
         run: |
