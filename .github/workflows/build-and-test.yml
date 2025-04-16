@@ -26,11 +26,4 @@ jobs:
     needs: build
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-haskell@v1
-        with:
-          enable-stack: true
-          ghc-version: 8.10.4
-
-      - name: Test
-        run: ./test/run.sh
+      - run: ./test/run.sh
