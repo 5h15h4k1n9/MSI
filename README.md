@@ -115,11 +115,11 @@ Reverted with: unknown member
 MSI> storeInArr(0, 3, "Haskell > OCaml")
 (void) void
 MSI> readFromArr(0)
-"Haskell > OCaml"
+(string) "Haskell > OCaml"
 MSI> storeInArr(0, 12, "Haskell < OCaml")
 Reverted with: Incorrect stop
 MSI> readFromArr(0)
-"Haskell > OCaml"
+(string) "Haskell > OCaml"
 MSI> exit
 Bye-bye!
 ~>
