@@ -8,8 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -37,8 +36,7 @@ jobs:
           stack --no-terminal build
 
   test:
-    name: Test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     needs: build
 
     steps:
@@ -46,7 +44,7 @@ jobs:
       - uses: actions/setup-haskell@v1
         with:
           enable-stack: true
-          ghc-version: ${{ matrix.ghc }}
+          ghc-version: ghc-8.10.4
 
       - name: Test
         run: ./test/run.sh
