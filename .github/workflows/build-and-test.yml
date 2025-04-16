@@ -1,4 +1,4 @@
-name: build
+name: Build and Test
 
 on:
   push:
@@ -8,16 +8,19 @@ on:
 
 jobs:
   build:
-    name: ${{ matrix.os }}
+    name: "OS: ${{ matrix.os }} / GHC: ${{ matrix.ghc }} | Build"
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-18.04]
+        ghc: [ghc-8.10.4]
 
-# Add to cache setup-haskell action
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-haskell@v1
+        with:
+          enable-stack: true
+          ghc-version: ${{ matrix.ghc }}
 
       - name: Cache
         uses: actions/cache@v2
@@ -36,3 +39,21 @@ jobs:
       - name: Build
         run: |
           stack --no-terminal build
+
+  test:
+    name: "OS: ${{ matrix.os }} | Test"
+    runs-on: ${{ matrix.os }}
+    needs: build
+    strategy:
+      matrix:
+        os: [ubuntu-18.04]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-haskell@v1
+        with:
+          enable-stack: true
+          ghc-version: ${{ matrix.ghc }}
+
+      - name: Test
+        run: ./test/run.sh
