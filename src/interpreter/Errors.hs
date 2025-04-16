@@ -1,13 +1,25 @@
 module Errors where
+import Ast
+import Prelude hiding (lookup)
+import Data.Map
 
-import AST
-import TypeOps
+data MSJump =
+    Break
+  | Continue
+  | Return MSValue
+  deriving (Show)
 
-interpretationError :: String 
-interpretationError = "Interpretation error"
-
-cannotEvalBinOp :: SBinOp -> SValue -> SValue -> String
-cannotEvalBinOp op v1 v2 = "Cannot evaluate operation (" ++ show op ++ ") on " ++ show v1 ++ " and " ++ show v2
-
-cannotEvalUnOp :: SUnOp -> SValue -> String
-cannotEvalUnOp op v = "Cannot evaluate operation (" ++ show op ++ ") on " ++ show v
+data MSInterpretationError =
+    NameNotExist Id
+  | DuplicatedName Id
+  | UndefinedName Id
+  | MismatchedType MSType MSType
+  | UnsupportedBinOp MSBinOp MSType MSType
+  | UnsupportedUnOp MSUnOp MSType
+  | ZeroDivision
+  | IndexOutOfBounds MSValue
+  | KeyNotFound MSValue
+  | MismatchedArgsCount
+  | Jump MSJump
+  | RequireFailed String
+  deriving (Show)
