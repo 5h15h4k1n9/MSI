@@ -26,4 +26,6 @@ jobs:
     needs: build
 
     steps:
-      - run: ./runTests.sh
+      - name: Test
+        shell: bash
+        run: ./test/run.sh
