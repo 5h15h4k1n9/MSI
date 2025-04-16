@@ -1,5 +1,4 @@
-<a href="https://github.com/5h15h4k1n9/MSI/actions"><img alt="Build Status" src="https://github.com/5h15h4k1n9/MSI/actions/workflows/build.yml/badge.svg"></a>
-<a href="https://github.com/5h15h4k1n9/MSI/actions"><img alt="Test Status" src="https://github.com/5h15h4k1n9/MSI/actions/workflows/test.yml/badge.svg"></a>
+[![Build and Test](https://github.com/5h15h4k1n9/MSI/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/5h15h4k1n9/MSI/actions/workflows/build-and-test.yml)
 
 # Mini Solidity Interpreter
 
