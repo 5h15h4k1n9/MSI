@@ -26,6 +26,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Test
-        shell: bash
-        run: ./test/run.sh
+      - uses: actions/checkout@v2
+
+      - run: ./test/run.sh
