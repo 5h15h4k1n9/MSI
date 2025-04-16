@@ -36,20 +36,21 @@ This is a mini interpreter for Solidity language written in Haskell.
 ```solidity
 contract Example {
 
-    uint public value = 0;
-    function storeValue(uint x) public {	
+    int public value = 0;
+    function storeValue(int x) public {	
         value = x;
         require(value < 100, "Huge value");
     }
 
-    mapping(uint => uint) private cache;
-    function privateFib(uint arg) private returns (uint) {
+    mapping(int => int) private cache;
+
+    function privateFib(int arg) private returns (int) {
         if (arg == 0 || arg == 1) {
             return 1;
         }
-        uint current = cache[arg];
+        int current = cache[arg];
         if (current == 0){
-            uint result = privateFib(arg - 1) + privateFib(arg - 2);
+            int result = privateFib(arg - 1) + privateFib(arg - 2);
             cache[arg] = result;
             return result;
         }
@@ -58,21 +59,21 @@ contract Example {
         }
     }
 
-    function fib(uint arg) public returns (uint) {
+    function fib(int arg) public returns (int) {
         return privateFib(arg);
     }
 
-    uint public constant arrSize = 10;	
+    int public constant arrSize = 10;	
     string[arrSize] private arr;
 
-    function storeInArr(uint start, uint stop, string calldata newValue) public {
-        for (uint i = start; i < stop; i++) {
+    function storeInArr(int start, int stop, string calldata newValue) public {
+        for (int i = start; i < stop; i = i + 1) {
             require(i < arrSize, "Incorrect stop");
             arr[i] = newValue;
         }
     }
 
-    function readFromArr(uint index) public returns (string memory) {
+    function readFromArr(int index) public returns (string) {
         require(index < arrSize);
         return arr[index];
     }
@@ -86,11 +87,11 @@ contract Example {
 ~> msi Example.sol
 Example.sol successfully uploaded!
 Available functions:
-    storeValue(uint)
-    loadValue() returns (uint)
-    fib(uint) returns (uint)
-    storeInArr(uint, uint, string)
-    readFromArr(uint) returns (string)
+    storeValue(int)
+    loadValue() returns (int)
+    fib(int) returns (int)
+    storeInArr(int, int, string)
+    readFromArr(int) returns (string)
 Available members:
     value
     arrSize
