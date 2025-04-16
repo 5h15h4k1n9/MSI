@@ -1,0 +1,4 @@
+factorial(0)
+factorial(5)
+factorial(10)
+exit

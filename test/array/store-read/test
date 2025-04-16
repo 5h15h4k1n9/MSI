@@ -1,0 +1,3 @@
+store(0, "Solidity")
+read(0)
+exit

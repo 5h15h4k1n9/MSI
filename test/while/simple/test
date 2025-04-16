@@ -1,0 +1,7 @@
+countUpTo(5)
+countUpTo(0)
+sumTo(3)
+sumTo(0)
+doubleUntil(10)
+doubleUntil(1)
+exit

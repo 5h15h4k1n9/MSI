@@ -1,0 +1,4 @@
+store(2, "First")
+store(2, "Second")
+read(2)
+exit

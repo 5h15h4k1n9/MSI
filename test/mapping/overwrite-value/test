@@ -1,0 +1,5 @@
+store(1, "Alice")
+read(1)
+store(1, "Bob")
+read(1)
+exit

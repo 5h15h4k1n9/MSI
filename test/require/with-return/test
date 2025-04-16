@@ -1,0 +1,4 @@
+earlyReturn(0)
+counter
+earlyReturn(100)
+exit

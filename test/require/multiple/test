@@ -1,0 +1,5 @@
+nestedRequire(150)
+multiEffect(3, 10)
+counter
+flag
+exit

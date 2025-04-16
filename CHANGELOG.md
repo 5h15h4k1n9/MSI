@@ -9,3 +9,15 @@ and this project adheres to the
 ## [0.0.1] - 08.12.2022
 
 Created project.
+
+## [0.0.2] - 11.12.2022
+
+### Added
+
+
+- `AST` module with `AST` data type and `show` instance.
+  - Base types: `uint8`, `bool`, `string`, `mapping`, `array`.
+  - Binary operators: `+`, `-`, `*`, `/`, `==`, `!=`, `&&`, `||`, `!`, `>`, `<`, `>=`, `<=`.
+  - Unary operators: `++`, `--`, `-`, `!`.
+  - Expressions: var call, value expression, unary operation, binary operation, array/mapping/string element access, function call.
+- Value operations: `+`, `-`, `*`, `/`, `==`, `!=`, `&&`, `||`, `!`, `>`, `<`, `>=`, `<=`.
