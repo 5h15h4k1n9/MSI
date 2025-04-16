@@ -1,0 +1,3 @@
+onlyIf(1)
+onlyIf(-1)
+exit

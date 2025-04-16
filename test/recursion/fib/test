@@ -1,0 +1,4 @@
+fibonacci(0)
+fibonacci(5)
+fibonacci(15)
+exit

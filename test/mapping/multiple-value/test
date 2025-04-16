@@ -1,0 +1,5 @@
+store(1, "Alice")
+store(2, "Charlie")
+read(1)
+read(2)
+exit

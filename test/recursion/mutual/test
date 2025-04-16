@@ -1,0 +1,5 @@
+even(0)
+odd(0)
+even(101)
+odd(101)
+exit

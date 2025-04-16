@@ -1,0 +1,3 @@
+simpleCheck(0)
+withMessage(false)
+exit

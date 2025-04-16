@@ -1,0 +1,7 @@
+isPositive(7)
+isPositive(0)
+isPositive(-10)
+max(5, 3)
+max(2, 7)
+max(4, 4)
+exit
