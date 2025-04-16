@@ -8,19 +8,15 @@ on:
 
 jobs:
   build:
-    name: "OS: ${{ matrix.os }} / GHC: ${{ matrix.ghc }} | Build"
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-18.04]
-        ghc: [ghc-8.10.4]
+    name: Build
+    runs-on: ubuntu-18.04
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-haskell@v1
         with:
           enable-stack: true
-          ghc-version: ${{ matrix.ghc }}
+          ghc-version: ghc-8.10.4
 
       - name: Cache
         uses: actions/cache@v2
@@ -41,12 +37,9 @@ jobs:
           stack --no-terminal build
 
   test:
-    name: "OS: ${{ matrix.os }} | Test"
-    runs-on: ${{ matrix.os }}
+    name: Test
+    runs-on: ubuntu-18.04
     needs: build
-    strategy:
-      matrix:
-        os: [ubuntu-18.04]
 
     steps:
       - uses: actions/checkout@v2

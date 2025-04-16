@@ -95,31 +95,31 @@ Available members:
     value
     arrSize
 
-> storeValue(10)
+MSI> storeValue(10)
 ()
-> value
+MSI> value
 10
-> storeValue(101)
+MSI> storeValue(101)
 Reverted with: Huge value
-> value
+MSI> value
 10
-> fib(2)
+MSI> fib(2)
 2
-> privateFib(2)
+MSI> privateFib(2)
 Reverted with: access denied
-> unknownFunction()
+MSI> unknownFunction()
 Reverted with: unknown function
-> unknownMember = 3
+MSI> unknownMember = 3
 Reverted with: unknown member
-> storeInArr(0, 3, "Haskell > OCaml")
+MSI> storeInArr(0, 3, "Haskell > OCaml")
 ()
-> readFromArr(0)
+MSI> readFromArr(0)
 Haskell > OCaml
-> storeInArr(0, 12, "Haskell < OCaml")
+MSI> storeInArr(0, 12, "Haskell < OCaml")
 Reverted with: Incorrect stop
-> readFromArr(0)
+MSI> readFromArr(0)
 Haskell > OCaml
-> <Ctrl+D>
+MSI> exit
 Bye-bye!
 ~>
 ```
