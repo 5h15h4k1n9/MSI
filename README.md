@@ -5,30 +5,31 @@
 This is a mini interpreter for Solidity language written in Haskell.
 
 ## Tasks
-- [ ] Standard types
-  - [ ] `uint`
-  - [ ] `bool`
-  - [ ] `string`
-  - [ ] `mapping`
-  - [ ] `array`
-- [ ] Standard operators
-- [ ] Functions
-  - [ ] Declaration
-  - [ ] Recursion
-- [ ] Access modifiers
-  - [ ] `public`
-  - [ ] `private`
+- [x] Standard types
+  - [x] `int`
+  - [x] `bool`
+  - [x] `string`
+  - [x] `mapping`
+  - [x] `array`
+- [x] Standard operators
+- [x] Functions
+  - [x] Declaration
+  - [x] Recursion
+- [x] Access modifiers
+  - [x] `public`
+  - [x] `private`
   - [ ] ~~`internal`~~
   - [ ] ~~`external`~~
-- [ ] Variables
-  - [ ] Declaration
-  - [ ] Assignment
-- [ ] Constants
-- [ ] `require`
+- [x] Variables
+  - [x] Declaration
+  - [x] Assignment
+- [ ] ~~Constants`~~
+- [x] `require`
   - Throws error if condition is false and reverts all changes
-- [ ] Statements
-  - [ ] `if`
-  - [ ] `for`
+- [x] Statements
+  - [x] `if`
+  - [x] `for`
+  - [x] `while` 
 
 ## Example of contract
 
