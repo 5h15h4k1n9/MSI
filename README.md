@@ -97,15 +97,15 @@ Available members:
     arrSize
 
 MSI> storeValue(10)
-()
+(void) void
 MSI> value
-10
+(int) 10
 MSI> storeValue(101)
 Reverted with: Huge value
 MSI> value
-10
+(int) 10
 MSI> fib(2)
-2
+(int) 2
 MSI> privateFib(2)
 Reverted with: access denied
 MSI> unknownFunction()
@@ -113,13 +113,13 @@ Reverted with: unknown function
 MSI> unknownMember = 3
 Reverted with: unknown member
 MSI> storeInArr(0, 3, "Haskell > OCaml")
-()
+(void) void
 MSI> readFromArr(0)
-Haskell > OCaml
+"Haskell > OCaml"
 MSI> storeInArr(0, 12, "Haskell < OCaml")
 Reverted with: Incorrect stop
 MSI> readFromArr(0)
-Haskell > OCaml
+"Haskell > OCaml"
 MSI> exit
 Bye-bye!
 ~>
